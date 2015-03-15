@@ -7,8 +7,11 @@
 //
 
 #import "ToDoListTableViewController.h"
+#import "ToDoItem.h"
 
 @interface ToDoListTableViewController ()
+
+@property NSMutableArray *toDoItems;
 
 @end
 
@@ -21,11 +24,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.toDoItems = [[NSMutableArray alloc] init];
+    [self loadInitialData];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void) loadInitialData{
+    ToDoItem *item1 = [[ToDoItem alloc] init];
+    item1.itemName = @"Repair my teeth";
+    item1.completed = true;
+    [self.toDoItems addObject:item1];
+    
+    ToDoItem *item2 = [[ToDoItem alloc] init];
+    item2.itemName = @"Go and get metro";
+    [self.toDoItems addObject:item2];
+    
+    ToDoItem *item3 = [[ToDoItem alloc] init];
+    item3.itemName = @"Arrive Joy City";
+    [self.toDoItems addObject:item3];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,26 +58,39 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [self.toDoItems count];
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListPrototypeCell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    ToDoItem *toDoItem = [self.toDoItems objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = toDoItem.itemName;
+    
+    if(toDoItem.completed){
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     
     return cell;
 }
-*/
+
+- (void) tableView:(UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    ToDoItem *tappedItem = [self.toDoItems objectAtIndex:indexPath.row];
+    tappedItem.completed = !tappedItem.completed;
+    
+    [tableView reloadRowsAtIndexPaths:@[indexPath]
+                     withRowAnimation: UITableViewRowAnimationNone];
+}
 
 /*
 // Override to support conditional editing of the table view.
