@@ -8,7 +8,7 @@
         <!--Add To-Do Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="AddToDoItemViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="AddToDoItemViewController" customModule="ToDoList" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -43,8 +43,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="saveButton" destination="Tdk-KP-EKF" id="hhG-c0-l93"/>
-                        <outlet property="textField" destination="Tt9-h5-FB3" id="zDM-lm-EWK"/>
+                        <outlet property="saveButton" destination="Tdk-KP-EKF" id="DCJ-eE-PVb"/>
+                        <outlet property="textField" destination="Tt9-h5-FB3" id="wwl-1d-K3r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
