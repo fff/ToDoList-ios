@@ -12,17 +12,17 @@ class AddToDoItemViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
 
-    var toDoItem:ToDoItem?
+    var toDoItem:ToDoItem!
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(sender as? UIBarButtonItem != self.saveButton){
-            return;
+            return
         }
         
         if(!self.textField.text.isEmpty){
             self.toDoItem = ToDoItem();
-            self.toDoItem!.itemName = self.textField.text;
-            self.toDoItem!.completed = false;
+            self.toDoItem.itemName = self.textField.text;
+            self.toDoItem.completed = false;
         }
     }
     
