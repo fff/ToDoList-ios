@@ -7,7 +7,7 @@
 //
 
 #import "ToDoListTableViewController.h"
-#import "ToDoItem.h"
+#import "ToDoList-Swift.h"
 #import "AddToDoItemViewController.h"
 
 @interface ToDoListTableViewController ()
